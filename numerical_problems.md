@@ -411,3 +411,140 @@ AI may select an unsuitable formula, mix units, omit losses, or overlook practic
 Conclusion
 
 These eight problems demonstrate basic wavelength, dipole length, antenna gain, reflection coefficient, VSWR, reflected power, and RF link-budget calculations. Explicit assumptions and verification checks help make AI-assisted engineering learning more reliable.
+
+Additional Worked RF Numerical Problems
+
+Problem 3: Calculate Wavelength
+
+Given:
+
+- Frequency, (f = 150\text{ MHz})
+- Speed of light, (c = 3 \times 10^8\text{ m/s})
+
+Formula:
+
+[
+\lambda = \frac{c}{f}
+]
+
+Calculation:
+
+[
+\lambda = \frac{3 \times 10^8}{150 \times 10^6}
+]
+
+Answer: Wavelength = 2 m
+
+Problem 4: Convert dBm to Milliwatts
+
+Given: Power = 17 dBm
+
+Formula:
+
+[
+P(\text{mW}) = 10^{P(\text{dBm})/10}
+]
+
+Calculation:
+
+[
+P = 10^{17/10} = 50.12\text{ mW}
+]
+
+Answer: Power = 50.12 mW
+
+Problem 5: Calculate Free-Space Path Loss
+
+Given:
+
+- Frequency = 2400 MHz
+- Distance = 1 km
+
+Formula:
+
+[
+FSPL = 32.44 + 20\log_{10}(f_{\text{MHz}}) + 20\log_{10}(d_{\text{km}})
+]
+
+Calculation:
+
+[
+FSPL = 32.44 + 20\log_{10}(2400) + 20\log_{10}(1)
+]
+
+[
+FSPL \approx 100.04\text{ dB}
+]
+
+Answer: Free-space path loss = 100.04 dB
+
+Problem 6: Calculate Received Power Using a Link Budget
+
+Given:
+
+- Transmitter power = 20 dBm
+- Transmitting antenna gain = 8 dBi
+- Receiving antenna gain = 2 dBi
+- Transmitter cable loss = 1 dB
+- Receiver cable loss = 1 dB
+- Path loss = 100 dB
+
+Formula:
+
+Received power = Transmitter power + Antenna gains − Cable losses − Path loss
+
+Calculation:
+
+[
+P_r = 20 + 8 + 2 - 1 - 1 - 100
+]
+
+[
+P_r = -72\text{ dBm}
+]
+
+Answer: Received power = −72 dBm
+
+Problem 7: Calculate Effective Isotropic Radiated Power (EIRP)
+
+Given:
+
+- Transmitter power = 23 dBm
+- Feeder loss = 2 dB
+- Antenna gain = 12 dBi
+
+Formula:
+
+[
+EIRP = P_t - L_f + G_t
+]
+
+Calculation:
+
+[
+EIRP = 23 - 2 + 12 = 33\text{ dBm}
+]
+
+Answer: EIRP = 33 dBm, approximately 2 W.
+
+Problem 8: Convert Antenna Gain from dBi to Linear Scale
+
+Given: Antenna gain = 10 dBi
+
+Formula:
+
+[
+G_{\text{linear}} = 10^{G_{\text{dBi}}/10}
+]
+
+Calculation:
+
+[
+G_{\text{linear}} = 10^{10/10} = 10
+]
+
+Answer: Linear antenna gain = 10 times the reference isotropic antenna gain in power terms.
+
+---
+
+Note: These examples use idealized free-space calculations. Real RF links may experience additional losses due to obstacles, fading, polarization mismatch, and other environmental effects.
