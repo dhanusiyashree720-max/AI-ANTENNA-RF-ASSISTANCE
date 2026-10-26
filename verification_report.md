@@ -86,13 +86,13 @@ Note: These results apply only to the tests described above. They do not establi
 Compare the original AI output with the final verified result.
 
 Criterion| Before verification| After verification
-Formula correctness| Record the original output| Record the checked result
-Unit consistency| Record any observed issue| Record the final unit check
-Numerical accuracy| Record the AI result| Record the independent result
-Reference support| Record the original source support| Add the verified citation
-Explanation quality| Assess clarity and assumptions| Record improvements, if any
+Formula correctness| Original AI output must be recorded before comparison.| Final formula must be checked against a reliable technical reference.
+Unit consistency| Original units must be recorded and checked.| Units and conversions must be verified for consistency.
+Numerical accuracy| Original AI result must be recorded.| Independent calculation must be recorded and compared with the AI result.
+Reference support| Original source support must be documented.| Verified source citation must be added for each relevant technical claim.
+Explanation quality| Assess the clarity and assumptions of the original explanation.| Record specific improvements only when supported by the comparison.
 
-Do not claim that accuracy improved unless the comparison provides evidence.
+Conclusion: This comparison identifies the evidence required to assess the AI output. Accuracy improvement cannot be confirmed until the original outputs and final verified results are documented and compared.
 
 8. Limitations of AI
 
