@@ -75,11 +75,11 @@ Check each diagram for correct labels, physical relationships, and assumptions. 
 Record only errors observed during actual testing.
 
 Test ID| Observed output or issue| Evidence| Correction| Final status
-E1| To be recorded during testing| Source or calculation evidence| To be completed| Pending
-E2| To be recorded during testing| Source or calculation evidence| To be completed| Pending
-E3| To be recorded during testing| Source or calculation evidence| To be completed| Pending
+E1| No error observed during the website calculator test with the tested inputs.| Test inputs: Pt = 20 dBm, Gt = 2 dBi, Gr = 3 dBi, Lp = 100 dB, Lother = 2 dB. Expected output: Pr = −77 dBm.| No correction required for this test.| Passed for the tested inputs
+E2| No error observed during the quiz test.| Quiz was tested; no error was reported.| No correction required.| Passed for the tested quiz
+E3| No additional error documented.| No separate error evidence recorded.| No correction recorded.| Not tested separately
 
-If no error is observed, record that outcome instead of inventing an error.
+Note: These results apply only to the tests described above. They do not establish that every formula or feature has been fully verified.
 
 7. Before-and-After Analysis
 
