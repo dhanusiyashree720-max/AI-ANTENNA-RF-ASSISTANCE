@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RF Learning Assistant</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#0b1120;color:#e5edf9}
+header{padding:28px 18px;background:#142344;text-align:center}
+header h1{color:#66d9ef;margin-bottom:8px}
+nav{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;padding:15px}
+a{color:#66d9ef}
+main{max-width:850px;margin:auto;padding:16px}
+section,.card{background:#151f33;border:1px solid #293952;border-radius:12px;padding:18px;margin:14px 0}
+h2{color:#66d9ef}
+input,select,button{padding:11px;border-radius:7px;border:1px solid #52647d;margin:5px 0;max-width:100%}
+input{width:100%;background:#0b1120;color:white}
+button{background:#087eac;color:white;cursor:pointer}
+.result{font-size:20px;color:#78e6a0;font-weight:bold}
+.small{color:#aabbd1;font-size:14px}
+</style>
+</head>
+<body>
+<header>
+<h1>📡 RF Learning Assistant</h1>
+<p>Learn antennas, radio waves and RF link budgets.</p>
+<p class="small">An interactive educational learning tool</p>
+</header>
+<nav>
+<a href="#learn">Learn</a>
+<a href="#calculator">Calculator</a>
+<a href="#quiz">Quiz</a>
+</nav>
+<main>
+<section id="learn">
+<h2>RF Concepts</h2>
+<div class="card">
+<h3>1. Radio Frequency</h3>
+Radio frequency (RF) refers to electromagnetic signals used for wireless communication.
+</div>
+<div class="card">
+<h3>2. Antenna Gain</h3>
+Antenna gain describes how effectively an antenna directs energy compared with a reference antenna. It is commonly expressed in dBi.
+</div>
+<div class="card">
+<h3>3. Wavelength</h3>
+Wavelength is the distance travelled by a wave during one cycle.
+<p>Formula: λ = c / f</p>
+</div>
+<div class="card">
+<h3>4. Free-Space Path Loss</h3>
+Signal power decreases as a radio wave travels through free space.
+<p>FSPL (dB) = 32.44 + 20 log₁₀(f MHz) + 20 log₁₀(d km)</p>
+</div>
+</section>
+
+<section id="calculator">
+<h2>RF Link Budget Calculator</h2>
+<p class="small">Enter powers and gains in dB units as specified.</p>
+<label>Transmitter power (dBm)</label>
+<input id="pt" type="number" value="20">
+<label>Transmitting antenna gain (dBi)</label>
+<input id="gt" type="number" value="2">
+<label>Receiving antenna gain (dBi)</label>
+<input id="gr" type="number" value="3">
+<label>Path loss (dB)</label>
+<input id="lp" type="number" value="100">
+<label>Other losses (dB)</label>
+<input id="lo" type="number" value="2">
+<button onclick="calculate()">Calculate received power</button>
+<p id="output" class="result">Received power: −77 dBm</p>
+<p class="small">Model: Pr = Pt + Gt + Gr − Lp − other losses. This simplified model excludes unentered losses.</p>
+</section>
+
+<section id="quiz">
+<h2>Knowledge Quiz</h2>
+<p>1. What is the formula for wavelength?</p>
+<select id="q1">
+<option value="">Choose an answer</option>
+<option value="a">λ = c / f</option>
+<option value="b">λ = c × f</option>
+<option value="c">λ = f / c</option>
+</select>
+<p>2. What does dBi express?</p>
+<select id="q2">
+<option value="">Choose an answer</option>
+<option value="a">Frequency</option>
+<option value="b">Antenna gain relative to an isotropic antenna</option>
+<option value="c">Distance</option>
+</select>
+<button onclick="checkQuiz()">Check answers</button>
+<p id="quizResult" class="result"></p>
+</section>
+<footer class="small">
+<p>Educational project: AI Antenna and RF Concepts Learning Assistant.</p>
+<p>This website uses predefined learning content; it does not connect to a live AI model.</p>
+</footer>
+</main>
+<script>
+function calculate(){
+ const ids=['pt','gt','gr','lp','lo'];
+ const v=ids.map(id=>Number(document.getElementById(id).value));
+ if(ids.some(id=>document.getElementById(id).value.trim()==='')||v.some(n=>!Number.isFinite(n))){
+  document.getElementById('output').textContent='Enter valid numbers in every field.';
+  return;
+ }
+ const result=v[0]+v[1]+v[2]-v[3]-v[4];
+ document.getElementById('output').textContent='Received power: '+result.toFixed(2)+' dBm';
+}
+function checkQuiz(){
+ let score=0;
+ if(document.getElementById('q1').value==='a')score++;
+ if(document.getElementById('q2').value==='b')score++;
+ document.getElementById('quizResult').textContent='Your score: '+score+'/2';
+}
+</script>
+</body>
+</html>
