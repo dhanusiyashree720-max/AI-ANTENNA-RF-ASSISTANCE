@@ -1,11 +1,3 @@
-Conclusion
-
-This project demonstrates a verification-focused approach to using AI for antenna and RF education. The project includes RF concept explanations, numerical problems, a glossary and quiz, educational diagrams, spreadsheet automation, and supporting documentation. AI-generated technical content should be checked against reliable references and independent calculations before it is accepted.
-
-Project Status
-
-The project materials have been uploaded to GitHub, and the educational website and link-budget calculator have been tested. The spreadsheet example produced a received power of −77 dBm for the documented input values. Final verification of all eight numerical problems, reference support, quiz answers, diagram accuracy, and before-and-after analysis must be confirmed against the supporting evidence before submission.CAPSTONE 15 — AI Antenna and RF Concepts Learning Assistant
-
 1. Introduction
 
 Artificial Intelligence (AI) can support engineering education by explaining technical concepts, generating examples, and helping students practise numerical problems. However, AI may produce incorrect formulas, unit errors, or invented values.
@@ -101,4 +93,8 @@ This project demonstrates a verification-focused approach to using AI for antenn
 
 15. Project Status
 
-This is the initial report draft. Verified numerical results, reference details, the error log, quiz, diagrams, automation test results, and final analysis will be added as the project progresses.
+The AI Antenna and RF Concepts Learning Assistant project has been developed, and its main deliverables have been uploaded to GitHub. These include the interactive learning website, RF concept explanations, eight numerical problems, glossary and quiz, educational diagrams, link-budget spreadsheet calculator, project presentation, references, and verification documentation.
+
+The website and link-budget calculator have been tested. The example link-budget calculation produced a received power of −77 dBm using the specified input values.
+
+Final verification of all formulas, numerical solutions, reference sources, quiz answers, diagrams, and before-and-after analysis remains to be completed. The project will be considered ready for final submission once all required checks are supported by documented evidence.
