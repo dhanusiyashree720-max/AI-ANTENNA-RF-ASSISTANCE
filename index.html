@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Antenna & RF Learning Assistant</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f0f4f8;
+      color: #172554;
+    }
+    header {
+      background: #102a43;
+      color: white;
+      padding: 25px 16px;
+      text-align: center;
+    }
+    main {
+      max-width: 850px;
+      margin: 20px auto;
+      padding: 16px;
+    }
+    section {
+      background: white;
+      margin: 14px 0;
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #0001;
+    }
+    button, select, input {
+      padding: 10px;
+      margin: 5px 0;
+      max-width: 100%;
+    }
+    button {
+      background: #1769aa;
+      color: white;
+      border: 0;
+      border-radius: 6px;
+    }
+    .result { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📡 AI Antenna & RF Learning Assistant</h1>
+    <p>Learn RF concepts. Verify formulas. Practice calculations.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>1. Dipole Antenna</h2>
+      <p>A half-wave dipole has an approximate total length of
+      half a wavelength.</p>
+      <p><b>Formula:</b> λ = c / f</p>
+      <p>Here, c is the speed of light and f is frequency in hertz.</p>
+    </section>
+
+    <section>
+      <h2>2. Antenna Gain</h2>
+      <p>Antenna gain describes radiation or reception effectiveness
+      in a specified direction relative to a reference antenna.</p>
+      <p>Linear gain = 10<sup>(gain in dBi / 10)</sup></p>
+    </section>
+
+    <section>
+      <h2>3. Impedance Matching</h2>
+      <p>Reflection coefficient for a real reference impedance:</p>
+      <p>Γ = (ZL − Z0) / (ZL + Z0)</p>
+      <p>Matching reduces reflected power.</p>
+    </section>
+
+    <section>
+      <h2>4. VSWR Calculator</h2>
+      <p>Enter reflection coefficient magnitude |Γ| from 0 to 1.</p>
+      <input id="gamma" type="number" min="0" max="1"
+        step="0.01" value="0.2" aria-label="Reflection coefficient">
+      <button onclick="calculateVSWR()">Calculate VSWR</button>
+      <p id="vswrResult" class="result"></p>
+    </section>
+
+    <section>
+      <h2>5. Link Budget Calculator</h2>
+      <p>Enter transmitter power in dBm, gains in dBi, and
+      total losses in dB, including path loss where applicable.</p>
+      <label>Transmitter power (dBm)</label><br>
+      <input id="pt" type="number" value="20"><br>
+      <label>Transmitter antenna gain (dBi)</label><br>
+      <input id="gt" type="number" value="2"><br>
+      <label>Receiver antenna gain (dBi)</label><br>
+      <input id="gr" type="number" value="2"><br>
+      <label>Total losses (dB)</label><br>
+      <input id="loss" type="number" min="0" value="100"><br>
+      <button onclick="calculateLink()">Calculate received power</button>
+      <p id="linkResult" class="result"></p>
+    </section>
+
+    <section>
+      <h2>Formula Verification</h2>
+      <p>VSWR = (1 + |Γ|) / (1 − |Γ|), for |Γ| &lt; 1.</p>
+      <p>Received power = transmitter power + antenna gains
+      − total losses, with compatible dB-based units.</p>
+      <p>Always check engineering formulas, assumptions, units,
+      and numerical answers against trusted references.</p>
+    </section>
+  </main>
+
+  <script>
+    function calculateVSWR() {
+      const g = Number(document.getElementById("gamma").value);
+      const out = document.getElementById("vswrResult");
+
+      if (!Number.isFinite(g) || g < 0 || g > 1) {
+        out.textContent = "Enter a value between 0 and 1.";
+      } else if (g === 1) {
+        out.textContent = "VSWR is infinite for |Γ| = 1.";
+      } else {
+        out.textContent = "VSWR = " +
+          ((1 + g) / (1 - g)).toFixed(3) + ":1";
+      }
+    }
+
+    function calculateLink() {
+      const ids = ["pt", "gt", "gr", "loss"];
+      const values = ids.map(id =>
+        Number(document.getElementById(id).value)
+      );
+      const out = document.getElementById("linkResult");
+
+      if (ids.some(id =>
+        document.getElementById(id).value.trim() === ""
+      ) || values.some(v => !Number.isFinite(v))) {
+        out.textContent = "Please enter valid numbers in every field.";
+        return;
+      }
+
+      const [pt, gt, gr, loss] = values;
+      out.textContent = "Estimated received power = " +
+        (pt + gt + gr - loss).toFixed(2) + " dBm";
+    }
+  </script>
+</body>
+</html>
